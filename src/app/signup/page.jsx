@@ -1,6 +1,6 @@
 "use client"
 
-import React, { use, useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import toast from 'react-hot-toast'
@@ -14,7 +14,7 @@ const SignUpPage = () => {
     username: ""
   })
   const[loading,setLoading]=useState(false)
-
+  
   const onSignup = async (e) => {
     e.preventDefault()
     try {
@@ -25,6 +25,7 @@ const SignUpPage = () => {
       router.push("/login")
       // you can replace this with API call
     } catch (error) {
+      toast.error(error.response.data.error)
       console.log("signup failed",error.message)
       // do this
       //TODO  toast.error(error.message)
@@ -32,6 +33,16 @@ const SignUpPage = () => {
       setLoading(false)
     }
   }
+   const [buttonDisabled, setButtonDisabled] = useState(false)
+    //add validations through useEffect
+    useEffect(()=>{
+      
+      if(user.email.length>0 && user.password.length>0 && user.email.length>0){
+        setButtonDisabled(false);
+      }else{
+        setButtonDisabled(true)
+      }
+    },[user])
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -94,7 +105,8 @@ const SignUpPage = () => {
         {/* Submit Button */}
         <button 
           type="submit" 
-          className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300"
+          className={` ${buttonDisabled?"bg-red-500":"bg-blue-500"} w-full text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300`}
+        
         >
           Sign Up
         </button>

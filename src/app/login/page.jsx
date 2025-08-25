@@ -4,6 +4,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 
 const LoginPage = () => {
   const router = useRouter()
@@ -20,14 +21,16 @@ const LoginPage = () => {
       console.log("login success",response.data)
       router.push('/profile')
     } catch (error) {
+      toast.error(error.response.data.error)
       console.log("login failed",error)
     }finally{
       setLoading(false)
     }
   }
-  const [ButtonDisabled, setButtonDisabled] = useState(false)
+  const [buttonDisabled, setButtonDisabled] = useState(false)
   //add validations through useEffect
   useEffect(()=>{
+    
     if(user.email.length>0 && user.password.length>0 && user.email.length>0){
       setButtonDisabled(false);
     }else{
