@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Turret_Road } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/NavBar";
+import { UserProvider } from "@/context/userContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,9 +25,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <UserProvider>
+          
       <Toaster/>
         <Navbar/>
         {children}
+        </UserProvider>
        
         
       </body>

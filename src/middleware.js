@@ -13,7 +13,15 @@ export function middleware(request) {
     return NextResponse.redirect(new URL('/login',request.nextUrl))
   }
 }
- 
 export const config = {
-  matcher: ['/profile','/','/login','/signup','/resetpassword','/resetpassword/view','/verifyemail']
+  matcher: [
+    '/',
+    '/profile',
+    '/links/:path*',         
+    '/login',
+    '/signup',
+    '/resetpassword',
+    '/resetpassword/view',
+    '/verifyemail'
+  ]
 }

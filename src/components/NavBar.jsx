@@ -11,18 +11,23 @@ export default function Navbar() {
 
         {/* Links */}
         <div className="space-x-6">
-          <Link href="/" className="hover:text-gray-300 transition">
+          <Link href="/links" className="hover:text-gray-300 transition">
             Home
           </Link>
           <Link href="/login" className="hover:text-gray-300 transition">
             Login
           </Link>
-          <Link href="/signup" className="hover:text-gray-300 transition">
-            Signup
+          <Link href="/links" className="hover:text-gray-300 transition">
+            link
+          </Link>
+          <Link href="/links/add" className="hover:text-gray-300 transition">
+            NewLink
           </Link>
           <Link href="/profile" className="hover:text-gray-300 transition">
             Profile
           </Link>
+         
+          
         </div>
       </div>
     </nav>
