@@ -22,13 +22,14 @@ const SignUpPage = () => {
       setLoading(true)
       const response=await axios.post("api/users/signup",user)
       console.log("signup done",response.data);
+      toast.success(response.data.message)
       router.push("/login")
-      // you can replace this with API call
+      
     } catch (error) {
       toast.error(error.response.data.error)
       console.log("signup failed",error.message)
       // do this
-      //TODO  toast.error(error.message)
+    
     }finally{
       setLoading(false)
     }
