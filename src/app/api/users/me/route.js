@@ -1,8 +1,10 @@
+import { dbConnect } from "@/db/dbConfig";
 import { getDataFromToken } from "@/helpers/getDataFromToken";
 import User from "@/models/userModel";
 import { NextResponse } from "next/server";
 
 export async function GET(request){
+   await dbConnect()
     try {
        const userId=await  getDataFromToken(request)
        const user=await User.findOne({_id:userId}).select("-password")

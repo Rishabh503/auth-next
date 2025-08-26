@@ -25,6 +25,7 @@ export default function Profile() {
     console.log(res.data.data)
     setData(res.data.data)
     console.log(data)
+    
   }
 
   return (
@@ -51,6 +52,7 @@ export default function Profile() {
         >
           My Profile
         </button>
+        
       </div>
     </div>
   )

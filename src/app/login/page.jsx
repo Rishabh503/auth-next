@@ -87,11 +87,14 @@ const LoginPage = () => {
           type="submit" 
           className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300"
         >
-          Sign Up
+          Login
         </button>
-        <div className='flex w-full items-center justify-center '>
+        <div className='flex w-full items-center justify-between '>
           <Link className='p-2 text-blue-400 m-2' href='/signup'>
       New User?  Signup
+        </Link>
+          <Link className='p-2 text-blue-400 m-2' href='/resetpassword'>
+      Forgot Password?? Reset here
         </Link>
         </div>
       </form>
